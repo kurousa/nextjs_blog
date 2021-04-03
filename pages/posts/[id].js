@@ -9,6 +9,8 @@ export default function Post({ postData }) {
         {postData.id}
         <br />
         {postData.date}
+        <br />
+        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
     </Layout>
   )
 }
@@ -24,7 +26,7 @@ export async function getStaticPaths(){
 
 export async function getStaticProps({ params }){
     // idに基づいて必要なデータを取得
-    const postData = getPostData(params.id)
+    const postData = await getPostData(params.id)
     return {
         props: {
             postData
