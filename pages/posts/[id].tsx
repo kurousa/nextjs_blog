@@ -3,8 +3,17 @@ import { getAllPostIds, getPostData } from '../../lib/posts'
 import Head from 'next/head'
 import Date from '../../components/date'
 import utilStyles from '../../styles/utils.module.css'
+import { GetStaticProps, GetStaticPaths } from 'next'
 
-export default function Post({ postData }) {
+export default function Post({ 
+    postData 
+}: {
+    postData: {
+        title: string
+        date: string
+        contentHtml: string
+    }
+}) {
   return (
     <Layout>
         <Head>
@@ -23,7 +32,7 @@ export default function Post({ postData }) {
   )
 }
 
-export async function getStaticPaths(){
+export const getStaticPaths: GetStaticPaths = async () => {
     // idが取りうる値のリストを返す
     const paths = getAllPostIds()
     return {
@@ -32,7 +41,7 @@ export async function getStaticPaths(){
     }
 }
 
-export async function getStaticProps({ params }){
+export const getStaticProps: GetStaticProps = async ({ params }) => {
     // idに基づいて必要なデータを取得
     const postData = await getPostData(params.id)
     return {
