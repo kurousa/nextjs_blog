@@ -16,7 +16,7 @@ export default function Home() {
         <a href="/posts/first-post">First Post</a>
         <h3>Social Network</h3>
         <a href="https://qiita.com/kurousa">Qiita</a><br/>
-        <a href="https://github.com/kurousa">Github</a>
+        <a href="https://github.com/kurousa">GitHub</a>
       </section>
     </Layout>
   )
